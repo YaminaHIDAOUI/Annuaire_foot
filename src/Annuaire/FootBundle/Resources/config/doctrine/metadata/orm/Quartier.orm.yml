@@ -1,0 +1,35 @@
+Quartier:
+    type: entity
+    table: quartier
+    indexes:
+        Vil_id:
+            columns:
+                - Vil_id
+    id:
+        idquar:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: idQuar
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: true
+            length: 254
+            fixed: false
+            comment: ''
+    manyToOne:
+        vil:
+            targetEntity: Ville
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Vil_id:
+                    referencedColumnName: idVille
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

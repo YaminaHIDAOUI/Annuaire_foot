@@ -1,0 +1,90 @@
+<?php
+
+namespace Annuaire\FootBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Terrain
+ *
+ * @ORM\Table(name="terrain", indexes={@ORM\Index(name="idUser", columns={"idUser"}), @ORM\Index(name="Cat_id", columns={"Cat_id"}), @ORM\Index(name="Qua_id", columns={"Qua_id"})})
+ * @ORM\Entity
+ */
+class Terrain
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idTerr", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idterr;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nom", type="integer", nullable=true)
+     */
+    private $nom;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="taille", type="bigint", nullable=true)
+     */
+    private $taille;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="capacite", type="integer", nullable=true)
+     */
+    private $capacite;
+
+    /**
+     * @var \Quartier
+     *
+     * @ORM\ManyToOne(targetEntity="Quartier")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Qua_id", referencedColumnName="idQuar")
+     * })
+     */
+    private $qua;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idUser", referencedColumnName="id")
+     * })
+     */
+    private $iduser;
+
+    /**
+     * @var \Categorie
+     *
+     * @ORM\ManyToOne(targetEntity="Categorie")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Cat_id", referencedColumnName="idCat")
+     * })
+     */
+    private $cat;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Equipement", mappedBy="idter")
+     */
+    private $idequi;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idequi = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

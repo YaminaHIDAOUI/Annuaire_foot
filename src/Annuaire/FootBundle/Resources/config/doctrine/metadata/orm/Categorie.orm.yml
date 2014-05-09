@@ -1,0 +1,21 @@
+Categorie:
+    type: entity
+    table: categorie
+    id:
+        idcat:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: idCat
+            generator:
+                strategy: IDENTITY
+    fields:
+        libelle:
+            type: string
+            nullable: true
+            length: 254
+            fixed: false
+            comment: ''
+    lifecycleCallbacks: {  }

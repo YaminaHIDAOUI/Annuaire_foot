@@ -1,0 +1,47 @@
+Commentaire:
+    type: entity
+    table: commentaire
+    indexes:
+        User_id:
+            columns:
+                - idUser
+        Ter_id:
+            columns:
+                - Ter_id
+    id:
+        idcom:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: idCom
+            generator:
+                strategy: IDENTITY
+    fields:
+        contenu:
+            type: string
+            nullable: true
+            length: 254
+            fixed: false
+            comment: ''
+    manyToOne:
+        ter:
+            targetEntity: Terrain
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Ter_id:
+                    referencedColumnName: idTerr
+            orphanRemoval: false
+        iduser:
+            targetEntity: User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idUser:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

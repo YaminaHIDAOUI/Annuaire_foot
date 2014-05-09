@@ -1,0 +1,88 @@
+{% extends 'AnnuaireUserBundle::layout.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %} Connexion {% endblock %}
+
+{% block fos_user_content %}
+
+    <!-- <div align="center" class="form-group has-error has-feedback">
+        {% if error %}
+            <label class="control-label">{{ error|trans }}</label>&nbsp;
+            <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+        {% endif %}
+    </div> -->
+
+    {% if error %}
+        <div class="form-signin">
+            <div align="center" class="alert alert-danger" style="background-color: #d9534f
+                                                           border: 1px solid #AAA;
+                                                           border-bottom: 1px solid #888;
+                                                           border-radius: 3px;
+                                                           color: black;
+                                                           box-shadow: 0px 2px 2px #AAA;
+                                                           max-width: 350px;
+                                                           height: 50px;
+                                                           text-align: center;
+                                                           align-content: center;">
+                <p class="text-danger" align="center">
+                        {{ error|trans }}&nbsp;
+                        <span class="glyphicon glyphicon-ban-circle form-control-feedback"></span>
+                </p>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="form-signin" style="background-color: #fbfbfb;
+                               border: 1px solid #AAA;
+                               border-bottom: 1px solid #888;
+                               border-radius: 3px;
+                               color: black;
+                               box-shadow: 0px 2px 2px #AAA;
+                               max-width: 700px;
+                               text-align: center;
+                               align-content: center;
+                               position: inherit;">
+        <table align="center">
+            <tr align="center">
+                <td><label>Connect here</label></th>
+                <td><label>Or connect using one of this</label></th>
+            </tr>
+            <tr>
+                <td width="330px" class="col-xs-6 col-md-5">
+                    <div align="left">
+                        <form class="form-signin" action="{{ path('fos_user_security_check') }}" method="post">
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+                            <label for="username">{{ 'security.login.username'|trans }}</label>
+                            <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required" />
+
+                            <label for="password">{{ 'security.login.password'|trans }}</label>
+                            <input type="password" class="form-control" id="password" name="_password" required="required" />
+
+                            <label for="remember_me" class="checkbox">
+                                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />{{ 'security.login.remember_me'|trans }}
+                            </label>
+
+                            <input type="submit" class="btn btn-lg btn-primary btn-block" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+
+                            <div class="form-group">
+                                <span class="pull-right"><a href="{{ path('fos_user_registration_register') }}" class="">Register</a></span>
+                            </div>
+                        </form>
+                    </div>
+                </td>
+                <td width="330px" align="center" class="col-xs-6 col-md-5">
+                    <div align="center">
+                        <a href="#"><img class="img-responsive" src="{{ asset('photos/facebook.gif') }}"/></a>
+                        <br/><br/>
+                        <a href="#"><img class="img-responsive" src="{{ asset('photos/twitter.gif') }}"/></a>
+                        <br/><br/>
+                        <a href="#"><img class="img-responsive" src="{{ asset('photos/google.gif') }}"/></a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+{% endblock fos_user_content %}

@@ -1,0 +1,38 @@
+Equipement:
+    type: entity
+    table: equipement
+    id:
+        idequi:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: idEqui
+            generator:
+                strategy: IDENTITY
+    fields:
+        libelle:
+            type: string
+            nullable: true
+            length: 254
+            fixed: false
+            comment: ''
+    manyToMany:
+        idter:
+            targetEntity: Terrain
+            cascade: {  }
+            mappedBy: null
+            inversedBy: idequi
+            joinTable:
+                name: terrequipement
+                joinColumns:
+                    -
+                        name: idEqui
+                        referencedColumnName: idEqui
+                inverseJoinColumns:
+                    -
+                        name: idTer
+                        referencedColumnName: idTerr
+            orderBy: null
+    lifecycleCallbacks: {  }

@@ -1,0 +1,3 @@
+annuaire_foot_homepage:
+    pattern:  /
+    defaults: { _controller: AnnuaireFootBundle:Default:index }

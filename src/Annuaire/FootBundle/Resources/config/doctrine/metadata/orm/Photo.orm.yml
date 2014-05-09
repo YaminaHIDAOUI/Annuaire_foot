@@ -1,0 +1,35 @@
+Photo:
+    type: entity
+    table: photo
+    indexes:
+        Ter_id:
+            columns:
+                - Ter_id
+    id:
+        idphoto:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: idPhoto
+            generator:
+                strategy: IDENTITY
+    fields:
+        libelle:
+            type: string
+            nullable: true
+            length: 254
+            fixed: false
+            comment: ''
+    manyToOne:
+        ter:
+            targetEntity: Terrain
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Ter_id:
+                    referencedColumnName: idTerr
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

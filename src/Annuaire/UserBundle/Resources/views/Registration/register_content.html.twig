@@ -1,0 +1,22 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+<div class="form-signin" style="background-color: #fbfbfb;
+                               border: 1px solid #AAA;
+                               border-bottom: 1px solid #888;
+                               border-radius: 3px;
+                               color: black;
+                               box-shadow: 0px 2px 2px #AAA;
+                               max-width: 700px;
+                               text-align: center;
+                               align-content: center;
+                               position: inherit;">
+
+	<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+	    {{ form_widget(form) }}
+	    <div>
+	        <input type="submit" width="150px" class="btn btn-primary" value="{{ 'registration.submit'|trans }}" />
+	    </div>
+	</form>
+
+</div>

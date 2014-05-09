@@ -1,0 +1,16 @@
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix: /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
+
+annuaire_foot:
+    resource: "@AnnuaireFootBundle/Resources/config/routing.yml"
+    prefix:   /
+
+annuaire_user:
+    resource: "@AnnuaireUserBundle/Resources/config/routing.yml"
+    prefix:   /

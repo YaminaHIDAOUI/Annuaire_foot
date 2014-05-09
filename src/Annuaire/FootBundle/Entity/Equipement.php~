@@ -1,0 +1,54 @@
+<?php
+
+namespace Annuaire\FootBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Equipement
+ *
+ * @ORM\Table(name="equipement")
+ * @ORM\Entity
+ */
+class Equipement
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idEqui", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idequi;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="libelle", type="string", length=254, nullable=true)
+     */
+    private $libelle;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Terrain", inversedBy="idequi")
+     * @ORM\JoinTable(name="terrequipement",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="idEqui", referencedColumnName="idEqui")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="idTer", referencedColumnName="idTerr")
+     *   }
+     * )
+     */
+    private $idter;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idter = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

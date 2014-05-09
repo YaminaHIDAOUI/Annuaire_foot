@@ -1,0 +1,76 @@
+Terrain:
+    type: entity
+    table: terrain
+    indexes:
+        idUser:
+            columns:
+                - idUser
+        Cat_id:
+            columns:
+                - Cat_id
+        Qua_id:
+            columns:
+                - Qua_id
+    id:
+        idterr:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: idTerr
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+        taille:
+            type: bigint
+            nullable: true
+            unsigned: false
+            comment: ''
+        capacite:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+    manyToOne:
+        qua:
+            targetEntity: Quartier
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Qua_id:
+                    referencedColumnName: idQuar
+            orphanRemoval: false
+        iduser:
+            targetEntity: User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idUser:
+                    referencedColumnName: id
+            orphanRemoval: false
+        cat:
+            targetEntity: Categorie
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Cat_id:
+                    referencedColumnName: idCat
+            orphanRemoval: false
+    manyToMany:
+        idequi:
+            targetEntity: Equipement
+            cascade: {  }
+            mappedBy: idter
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }
